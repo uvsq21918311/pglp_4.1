@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public final class Personnel  {
+public final class Personnel  implements InterfacePersonnel{
 
 	private final String nom;
 	private final String prenom;
@@ -83,6 +83,14 @@ public final class Personnel  {
 
 	public List<Integer> getNumerosTelephone() {
 		return numerosTelephone;
+	}
+
+
+
+
+	public void print() {
+		System.out.println("Nom :"+  nom + "Prenom : " + prenom + "fonction : " + fonction);
+		
 	}
 	
 	
