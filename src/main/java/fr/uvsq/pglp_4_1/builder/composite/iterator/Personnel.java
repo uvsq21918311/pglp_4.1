@@ -1,21 +1,18 @@
 package fr.uvsq.pglp_4_1.builder.composite.iterator;
 
 import java.time.LocalDate;
-
-
-
-
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-
-public final class Personnel  implements InterfacePersonnel{
+public final class Personnel extends PersonnelType {
 
 	private final String nom;
 	private final String prenom;
 	private final String fonction;
 	private final LocalDate dateNaissance;
-	private final ArrayList<Integer> numerosTelephone;
+	private final List<NumeroTelephone> numerosTelephone;
 	
 	public static class PersonnelBuilder {
 		
@@ -26,7 +23,7 @@ public final class Personnel  implements InterfacePersonnel{
 		
 		// Optionnel
 		private LocalDate dateNaissance = null;
-		private ArrayList<Integer> numerosTelephone = new ArrayList<Integer>();
+		private List<NumeroTelephone> numerosTelephone = new ArrayList<NumeroTelephone>();
 		
 		public PersonnelBuilder(String nom, String prenom, String fonction) {
 			this.nom = nom;
@@ -39,7 +36,7 @@ public final class Personnel  implements InterfacePersonnel{
 			return this;
 		}
 		
-		public PersonnelBuilder addNumeroTelephone(Integer numeroTelephone) {
+		public PersonnelBuilder addNumeroTelephone(NumeroTelephone numeroTelephone) {
 			this.numerosTelephone.add(numeroTelephone);
 			return this;
 		}
@@ -57,46 +54,57 @@ public final class Personnel  implements InterfacePersonnel{
 		numerosTelephone = builder.numerosTelephone;
 	}
 
-	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	public String toString() {
+		return nom + " " + prenom + " " + fonction + " "
+				+ dateNaissance.format(DateTimeFormatter.ISO_DATE) + " "
+				+ numerosTelephone.stream().map(NumeroTelephone::toString).collect(Collectors.toList());
+	}
 
-
+	/**
+	 * @return the nom
+	 */
 	public String getNom() {
 		return nom;
 	}
 
-
+	/**
+	 * @return the prenom
+	 */
 	public String getPrenom() {
 		return prenom;
 	}
 
-
+	/**
+	 * @return the fonction
+	 */
 	public String getFonction() {
 		return fonction;
 	}
 
-
+	/**
+	 * @return the dateNaissance
+	 */
 	public LocalDate getDateNaissance() {
 		return dateNaissance;
 	}
 
-
-	public List<Integer> getNumerosTelephone() {
+	/**
+	 * @return the numerosTelephone
+	 */
+	public List<NumeroTelephone> getNumerosTelephone() {
 		return numerosTelephone;
 	}
-
-
-
-
-	public void print() {
-		System.out.println("Nom :"+  nom + "Prenom : " + prenom + "fonction : " + fonction);
-		
+	
+	@Override
+	public boolean isGroupe() {
+		return false;
 	}
-	
-	
 	
 	
 	
 
 
 }
-
