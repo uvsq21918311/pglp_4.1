@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 public final class Personnel extends PersonnelType {
 
+	
 	private final String nom;
 	private final String prenom;
 	private final String fonction;
@@ -54,9 +55,6 @@ public final class Personnel extends PersonnelType {
 		numerosTelephone = builder.numerosTelephone;
 	}
 
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
 	public String toString() {
 		return nom + " " + prenom + " " + fonction + " "
 				+ dateNaissance.format(DateTimeFormatter.ISO_DATE) + " "
