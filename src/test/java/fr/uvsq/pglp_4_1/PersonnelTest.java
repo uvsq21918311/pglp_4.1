@@ -12,8 +12,7 @@ import org.junit.Test;
 
 import fr.uvsq.pglp_4_1.builder.composite.iterator.NumeroTelephone;
 import fr.uvsq.pglp_4_1.builder.composite.iterator.Personnel;
-import fr.uvsq.pglp_4_1.builder.composite.iterator.Personnel.PersonnelBuilder;
-import fr.uvsq.pglp_4_1.builder.composite.iterator.PersonnelGroupe;
+
 
 public class PersonnelTest {
 
@@ -21,9 +20,9 @@ private Personnel personnel;
 	
 	@Before()
 	public void setUp() {
-		PersonnelBuilder pb = new PersonnelBuilder("EL KADI", "Kamal", "Etudiant")
+		 personnel  = new Personnel.PersonnelBuilder("EL KADI", "Kamal", "Etudiant")
 				.dateNaissance(LocalDate.parse("1996-01-01", DateTimeFormatter.ISO_DATE))
-				.addNumeroTelephone(new NumeroTelephone("Perso", "0666666666"));
+				.addNumeroTelephone(new NumeroTelephone("Perso", "0666666666")).build();
 		
 	}
 	
@@ -53,19 +52,10 @@ private Personnel personnel;
 	public void testGetNumerosTelephone() {
 		List<NumeroTelephone> numList = new ArrayList<NumeroTelephone>();
 		numList.add(new NumeroTelephone("Perso", "0666666666"));
-		numList.add(new NumeroTelephone("Fax", "0612345678"));
 		assertEquals(personnel.getNumerosTelephone(), numList);	
 	}
 	
-	@Test()
-	public void testTypeStringPersonnel() {
-		assertEquals(personnel.typeString(), "Personnel");
-	}
 	
-	@Test()
-	public void testTypeStringGroupe() {
-		assertEquals((new PersonnelGroupe()).typeString(), "Groupe");
-	}
 	
 	
 

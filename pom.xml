@@ -12,10 +12,21 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+	<maven.compiler.target>1.8</maven.compiler.target>
   </properties>
 
   <build>
     <plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>3.1.0</version>
+        <configuration>
+          <configLocation>./checkstyle.xml</configLocation>
+        </configuration>
+
+      </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.7.0</version>
@@ -36,6 +47,11 @@
 			</archive>
 		</configuration>
 	</plugin>
+	<plugin>
+        <groupId>com.github.spotbugs</groupId>
+        <artifactId>spotbugs-maven-plugin</artifactId>
+        <version>4.0.0</version>
+      </plugin>
    </plugins>
   </build>
 	
@@ -73,7 +89,9 @@
 		  <artifactId>maven-project-info-reports-plugin</artifactId>
 		  <version>2.7</version>
 		</plugin>
+		
       </plugins>
+      <outputDirectory>target/site</outputDirectory>
     </reporting>
 
 	<dependencies>
@@ -83,5 +101,10 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		 <dependency>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs</artifactId>
+            <version>4.0.1</version>
+          </dependency>
 	</dependencies>
 </project>

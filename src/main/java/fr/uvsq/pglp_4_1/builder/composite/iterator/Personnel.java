@@ -61,37 +61,26 @@ public final class Personnel extends PersonnelType {
 				+ numerosTelephone.stream().map(NumeroTelephone::toString).collect(Collectors.toList());
 	}
 
-	/**
-	 * @return the nom
-	 */
 	public String getNom() {
 		return nom;
 	}
 
-	/**
-	 * @return the prenom
-	 */
+	
 	public String getPrenom() {
 		return prenom;
 	}
 
-	/**
-	 * @return the fonction
-	 */
 	public String getFonction() {
 		return fonction;
 	}
 
-	/**
-	 * @return the dateNaissance
-	 */
+	
 	public LocalDate getDateNaissance() {
 		return dateNaissance;
 	}
 
-	/**
-	 * @return the numerosTelephone
-	 */
+
+
 	public List<NumeroTelephone> getNumerosTelephone() {
 		return numerosTelephone;
 	}
